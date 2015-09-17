@@ -22,6 +22,7 @@ def spectrogram():
     NFFT = 1024
     Fs = int(1.0/dt)  # the sampling frequency
 
-    plt.specgram(data[:,1], NFFT=NFFT, Fs=Fs, noverlap=900,cmap=cm.gist_heat)
-    show()
+    plt.specgram(data[:,1], NFFT=NFFT, Fs=Fs, noverlap=900, cmap= plt.cm.gist_heat)
+    plt.show()
 
+spectrogram()
