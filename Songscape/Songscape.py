@@ -18,10 +18,10 @@ import sys
 def spectrogram():
     fs, data = sc.io.wavfile.read('/home/zechthurman/Songscape/03. Kali 47 (Original Mix).wav')
     t = data.size/500
-    dt = 0.0005
+    dt = 0.1
     NFFT = 1024
     Fs = int(1.0/dt)  # the sampling frequency
 
-    plt.specgram(data[:,1], NFFT=NFFT, Fs=Fs, noverlap=900,
-                                cmap=gist_heat)
-spectrogram()
+    plt.specgram(data[:,1], NFFT=NFFT, Fs=Fs, noverlap=900,cmap=cm.gist_heat)
+    show()
+
