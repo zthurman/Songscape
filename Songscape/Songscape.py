@@ -22,14 +22,9 @@ def spectrogram():
     NFFT = 1024
     Fs = int(1.0/dt)  # the sampling frequency
 
-    plt.specgram(data[:,1], NFFT=NFFT, Fs=Fs, noverlap=900, cmap= plt.cm.gist_heat)
+    [b, f, t, im] = plt.specgram(data[:,1], NFFT=NFFT, Fs=Fs, noverlap=900, cmap= plt.cm.gist_heat)
+    np.mesh(t, f, 10*log10(abs(b)))
     plt.show()
 
-spectrogram()
-
 if __name__ == "__main__":
-    qApp = QtGui.QApplication(sys.argv)
-    aw = ApplicationWindow()
-    aw.setWindowTitle('NeuroFizzMath' + ' ' + progversion)
-    aw.show()
-    sys.exit(qApp.exec_())
+    spectrogram()
