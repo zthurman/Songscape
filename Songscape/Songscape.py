@@ -8,22 +8,19 @@ from numpy import *
 import numpy as np
 import pylab
 import matplotlib as mp
-from matplotlib import pyplot as plt  
+from matplotlib import pyplot as plt
 import sys
 
 fs, data = sc.io.wavfile.read('/home/zechthurman/Songscape/03. Kali 47 (Original Mix).wav')
 t = data.size
 
-def do_tplot():
-    pylab.figure()
-    pylab.plot(t,data)
-    pylab.title("Membrane Potential over Time")
-    pylab.xlabel("Time")
-    pylab.ylabel("Membrane Potential")
-    pylab.xlim(0,100)
-    pylab.ylim(-1.9,2.2)
-    pylab.show()
-    return
+def do_spectrogram(x):
+    plt.specgram(x, NFFT=256, Fs=2, Fc=0, detrend=mlab.detrend_none,
+         window=mlab.window_hanning, noverlap=128,
+         cmap=None, xextent=None, pad_to=None, sides='default',
+         scale_by_freq=None, mode='default', scale='default',
+         **kwargs)
 
-print do_tplot()
+print do_spectrogram(data)
+
 
